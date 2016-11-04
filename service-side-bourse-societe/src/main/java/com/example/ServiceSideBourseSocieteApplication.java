@@ -9,6 +9,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
@@ -51,12 +54,13 @@ public class ServiceSideBourseSocieteApplication {
 
 	}
 
-	// @Configuration
-	// class Myconfig extends RepositoryRestMvcConfiguration {
-	// @Override
-	// protected void configureRepositoryRestConfiguration(
-	// RepositoryRestConfiguration config) {
-	// config.exposeIdsFor(Societe.class);
-	// }
-	// }
+	 @Configuration
+	 class Myconfig extends RepositoryRestMvcConfiguration {
+	 @Override
+	 protected void configureRepositoryRestConfiguration(
+				RepositoryRestConfiguration config) {
+		 System.out.println("conf for entity");
+	 config.exposeIdsFor(Societe.class);
+	 }
+	 }
 }
