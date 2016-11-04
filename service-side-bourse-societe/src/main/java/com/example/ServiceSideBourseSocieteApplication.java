@@ -54,13 +54,12 @@ public class ServiceSideBourseSocieteApplication {
 
 	}
 
-	 @Configuration
-	 class Myconfig extends RepositoryRestMvcConfiguration {
-	 @Override
-	 protected void configureRepositoryRestConfiguration(
-				RepositoryRestConfiguration config) {
-		 System.out.println("conf for entity");
-	 config.exposeIdsFor(Societe.class);
-	 }
-	 }
+	@Configuration
+	class Myconfig extends RepositoryRestMvcConfiguration {
+		@Override
+		protected void configureRepositoryRestConfiguration(
+		RepositoryRestConfiguration config) {
+			config.exposeIdsFor(Societe.class);
+		}
+	}
 }
